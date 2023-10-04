@@ -2,8 +2,10 @@ package co.com.auto.project.starsharp.grad.stepdefinitions;
 
 import co.com.auto.project.starsharp.grad.questions.Verificar;
 import co.com.auto.project.starsharp.grad.tasks.AbrirPagina;
+import co.com.auto.project.starsharp.grad.tasks.Crear;
 import co.com.auto.project.starsharp.grad.tasks.Ingresar;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -34,5 +36,18 @@ public class MyStepDefinition {
     public void verifyThatYouWereAbleToEnterCorrectly() {
         OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(Verificar.resultado(),
                 Matchers.is(true)));
+    }
+
+    @When("enter the organization menu")
+    public void enterTheOrganizationMenu() {
+        OnStage.theActorInTheSpotlight().attemptsTo(Crear.BusinessUnits());
+    }
+
+    @And("enter the business unit menu")
+    public void enterTheBusinessUnitMenu() {
+    }
+
+    @And("created the business unit")
+    public void createdTheBusinessUnit() {
     }
 }
